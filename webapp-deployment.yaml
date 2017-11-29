@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webapp-mj
+  labels:
+    app: mj
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mj
+    spec:
+      containers:
+      - image: lakwarus/mj:1.0
+        name: mj
+        imagePullPolicy: IfNotPresent
+        ports:
+        -
+          containerPort: 80
+          protocol: "TCP"
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 20

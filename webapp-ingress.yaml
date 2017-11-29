@@ -1,0 +1,8 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mj-ingress
+spec:
+  backend:
+    serviceName: mj-service
+    servicePort: 80
